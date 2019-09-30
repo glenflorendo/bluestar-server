@@ -6,6 +6,7 @@ const lessonsRoutes = require('../routes/lessons')
 const postsRoutes = require('../routes/posts')
 const programsRoutes = require('../routes/programs')
 const { router: authRoutes } = require('../routes/auth')
+const oauthRoutes = require('../routes/oauth');
 
 module.exports = function(app) {
     app.use(express.json())
@@ -16,6 +17,7 @@ module.exports = function(app) {
     app.use('/api/posts/', postsRoutes)
     app.use('/api/programs/', programsRoutes)
     app.use('/api/auth/', authRoutes)
+    app.use('/oauth', oauthRoutes)
 
     app.use((error, req, res, next) => {
         const status = error.statusCode || 500
